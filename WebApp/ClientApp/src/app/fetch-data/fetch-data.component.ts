@@ -39,13 +39,15 @@ import { HttpClient } from '@angular/common/http';
     submit() {
 
         var reservation: Reservation = <Reservation>{};
+        reservation.id = 1;
         reservation.sum = 2000;
+        reservation.Location = this.name;
         reservation.AddedOn = new Date();
         reservation.Currency = Currency.EUR;
         reservation.Type = Type.accommodation;
         reservation.DepartureTime = new Date();
         reservation.ArrivalTime = new Date();
-
+        reservation.Documents = Boolean();
 
         this.http.post(this.baseUrl + 'api/Reservations', reservation).subscribe(result => {
             console.log('success!');
@@ -62,7 +64,7 @@ import { HttpClient } from '@angular/common/http';
         interface Reservation {
             id: number;
             sum: number;
-            Location: number;
+            Location: string;
             AddedOn: Date;
             Currency: Currency;
             Type: Type;

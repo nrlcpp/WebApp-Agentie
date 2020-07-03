@@ -7,6 +7,7 @@
 <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="reservations">
     <thead>
         <tr>
+            <th>Id</th>
             <th>Sum</th>
             <th>Location</th>
             <th>AddedOn</th>
@@ -15,25 +16,28 @@
             <th>DepartureTime</th>
             <th>ArrivalTime</th>
             <th>Documents</th>
-            <th>Number of remarks</th>
+
         </tr>
     </thead>
+
     <tbody>
         <tr *ngFor="let reservations of reservations">
+            <td>{{ reservations.id }}</td>
             <td>{{ reservations.sum }}</td>
             <td>{{ reservations.location }}</td>
-            <td>{{ reservationst.addedOn }}</td>
+            <td>{{ reservations.addedOn }}</td>
             <td>{{ reservations.currency }}</td>
             <td>{{ reservations.type }}</td>
             <td>{{ reservations.departureTime }}</td>
-            <td>{{ reservationst.arrivalTime }}</td>
-            <td>{{ reservations.numberOfRemarks }}</td>
-            <td>
+            <td>{{ reservations.arrivalTime }}</td>
+            <td>{{ reservations.documents }}</td>
 
-<a class="btn btn-primary" [routerlink]="['/fetch-data', reservation.id]" routerlinkactive="active">details</a> |
-                <a class="btn btn-info">edit</a> |
-                <a class="btn btn-danger" (click)="delete(reservation.id)">delete</a>
+            <td>
+            <a class="btn btn-primary" [routerlink]="['/fetch-data', reservation.id]" routerlinkactive="active">details</a> |
+            <a class="btn btn-info">edit</a> |
+            <a class="btn btn-danger" (click)="delete(reservation.id)">delete</a>
             </td>
+
         </tr>
     </tbody>
 </table>
@@ -42,7 +46,7 @@
 <p>add a reservation</p>
 
 
-<input [(ngmodel)]="id" />
+<input [(ngModel)]="id" />
 
 <p>{{id}}</p>
 
