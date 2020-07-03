@@ -35,7 +35,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h1 id=\"tableLabel\">Weather forecast</h1>\r\n\r\n<p>This component demonstrates fetching data from the server.</p>\r\n\r\n<p *ngIf=\"!forecasts\"><em>Loading...</em></p>\r\n\r\n<table class='table table-striped' aria-labelledby=\"tableLabel\" *ngIf=\"forecasts\">\r\n  <thead>\r\n    <tr>\r\n      <th>Date</th>\r\n      <th>Temp. (C)</th>\r\n      <th>Temp. (F)</th>\r\n      <th>Summary</th>\r\n    </tr>\r\n  </thead>\r\n  <tbody>\r\n    <tr *ngFor=\"let forecast of forecasts\">\r\n      <td>{{ forecast.date }}</td>\r\n      <td>{{ forecast.temperatureC }}</td>\r\n      <td>{{ forecast.temperatureF }}</td>\r\n      <td>{{ forecast.summary }}</td>\r\n    </tr>\r\n  </tbody>\r\n</table>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<h1 id=\"tableLabel\">Reservations</h1>\r\n\r\n<p>Here you can see all the reservations, and you can edit, add or delete it.</p>\r\n\r\n<p *ngIf=\"!reservations\"><em>Loading...</em></p>\r\n\r\n<table class='table table-striped' aria-labelledby=\"tableLabel\" *ngIf=\"reservations\">\r\n    <thead>\r\n        <tr>\r\n            <th>Sum</th>\r\n            <th>Location</th>\r\n            <th>AddedOn</th>\r\n            <th>Currency</th>\r\n            <th>Type</th>\r\n            <th>DepartureTime</th>\r\n            <th>ArrivalTime</th>\r\n            <th>Documents</th>\r\n            <th>Number of remarks</th>\r\n        </tr>\r\n    </thead>\r\n    <tbody>\r\n        <tr *ngFor=\"let reservations of reservations\">\r\n            <td>{{ reservations.sum }}</td>\r\n            <td>{{ reservations.location }}</td>\r\n            <td>{{ reservationst.addedOn }}</td>\r\n            <td>{{ reservations.currency }}</td>\r\n            <td>{{ reservations.type }}</td>\r\n            <td>{{ reservations.departureTime }}</td>\r\n            <td>{{ reservationst.arrivalTime }}</td>\r\n            <td>{{ reservations.numberOfRemarks }}</td>\r\n            <td>\r\n\r\n<a class=\"btn btn-primary\" [routerlink]=\"['/fetch-data', reservation.id]\" routerlinkactive=\"active\">details</a> |\r\n                <a class=\"btn btn-info\">edit</a> |\r\n                <a class=\"btn btn-danger\" (click)=\"delete(reservation.id)\">delete</a>\r\n            </td>\r\n        </tr>\r\n    </tbody>\r\n</table>\r\n\r\n\r\n<p>add a reservation</p>\r\n\r\n\r\n<input [(ngmodel)]=\"id\" />\r\n\r\n<p>{{id}}</p>\r\n\r\n<button (click)=\"submit()\">submit!</button>\r\n\r\n\r\n<input type=\"date\" />\r\n");
 
 /***/ }),
 
@@ -48,7 +48,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h1>Agentie de turism</h1>\r\n<p>Welcome to your new single-page application, built with:</p>\r\n<ul>\r\n  <li><a href='https://get.asp.net/'>ASP.NET Core</a> and <a href='https://msdn.microsoft.com/en-us/library/67ef8sbd.aspx'>C#</a> for cross-platform server-side code</li>\r\n  <li><a href='https://angular.io/'>Angular</a> and <a href='http://www.typescriptlang.org/'>TypeScript</a> for client-side code</li>\r\n  <li><a href='http://getbootstrap.com/'>Bootstrap</a> for layout and styling</li>\r\n</ul>\r\n<p>Start your <strong>reservation</strong>:</p>\r\n<ul>\r\n    <li><strong>Add, Show or modify a reservation</strong></li>\r\n    <li><strong>Add, Show or modify a client (traveller)</strong></li>\r\n  <li><strong>Add, Show or modify remarks for a reservation</strong></li>\r\n</ul>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<h1>Agentie de turism</h1>\r\n<p>Welcome to your new single-page application for a Travel Agency, built with:</p>\r\n<ul>\r\n  <li><a href='https://get.asp.net/'>ASP.NET Core</a> and <a href='https://msdn.microsoft.com/en-us/library/67ef8sbd.aspx'>C#</a> for cross-platform server-side code</li>\r\n  <li><a href='https://angular.io/'>Angular</a> and <a href='http://www.typescriptlang.org/'>TypeScript</a> for client-side code</li>\r\n  <li><a href='http://getbootstrap.com/'>Bootstrap</a> for layout and styling</li>\r\n</ul>\r\n<p>Start your <strong>reservation</strong>:</p>\r\n<ul>\r\n    <li><strong>Add, Show or modify a reservation</strong></li>\r\n    <li><strong>Add, Show or modify a client (traveller)</strong></li>\r\n  <li><strong>Add, Show or modify remarks for a reservation</strong></li>\r\n</ul>\r\n");
 
 /***/ }),
 
@@ -265,9 +265,42 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 let FetchDataComponent = class FetchDataComponent {
     constructor(http, baseUrl) {
-        http.get(baseUrl + 'weatherforecast').subscribe(result => {
-            this.forecasts = result;
+        this.http = http;
+        this.baseUrl = baseUrl;
+        this.name = "test";
+        this.loadReservations();
+    }
+    loadReservations() {
+        this.http.get(this.baseUrl + 'api/Reservations').subscribe(result => {
+            this.reservations = result;
+            console.log(this.reservations);
         }, error => console.error(error));
+    }
+    delete(reservationId) {
+        if (confirm('Are you sure you want to delete the reservation with id ' + reservationId + '?')) {
+            this.http.delete(this.baseUrl + 'api/Reservations/' + reservationId)
+                .subscribe(result => {
+                alert('Reservation successfully deleted!');
+                this.loadReservations();
+            }, error => alert('Cannot delete reservation - maybe it has comments?'));
+        }
+    }
+    submit() {
+        var reservation = {};
+        reservation.sum = 2000;
+        reservation.AddedOn = new Date();
+        reservation.Currency = Currency.EUR;
+        reservation.Type = Type.accommodation;
+        reservation.DepartureTime = new Date();
+        reservation.ArrivalTime = new Date();
+        this.http.post(this.baseUrl + 'api/Reservations', reservation).subscribe(result => {
+            console.log('success!');
+            this.loadReservations();
+        }, error => {
+            if (error.status == 400) {
+                console.log(error.error.errors);
+            }
+        });
     }
 };
 FetchDataComponent.ctorParameters = () => [
@@ -283,6 +316,27 @@ FetchDataComponent = __decorate([
     __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"], String])
 ], FetchDataComponent);
 
+var Type;
+(function (Type) {
+    Type[Type["circuit"] = 0] = "circuit";
+    Type[Type["stay"] = 1] = "stay";
+    Type[Type["accommodation"] = 2] = "accommodation";
+    Type[Type["transport"] = 3] = "transport";
+    Type[Type["others"] = 4] = "others";
+})(Type || (Type = {}));
+var Currency;
+(function (Currency) {
+    Currency[Currency["EUR"] = 0] = "EUR";
+    Currency[Currency["RON"] = 1] = "RON";
+    Currency[Currency["USD"] = 2] = "USD";
+})(Currency || (Currency = {}));
+//    constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+//        http.get<Reservation[]>(baseUrl + 'api/Reservations').subscribe(result => {
+//            this.reservations = result;
+//            console.log(this.reservations);
+//        }, error => console.error(error));
+//    }
+//}
 
 
 /***/ }),

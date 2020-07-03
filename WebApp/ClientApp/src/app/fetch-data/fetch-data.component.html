@@ -1,24 +1,52 @@
-<h1 id="tableLabel">Weather forecast</h1>
+<h1 id="tableLabel">Reservations</h1>
 
-<p>This component demonstrates fetching data from the server.</p>
+<p>Here you can see all the reservations, and you can edit, add or delete it.</p>
 
-<p *ngIf="!forecasts"><em>Loading...</em></p>
+<p *ngIf="!reservations"><em>Loading...</em></p>
 
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="forecasts">
-  <thead>
-    <tr>
-      <th>Date</th>
-      <th>Temp. (C)</th>
-      <th>Temp. (F)</th>
-      <th>Summary</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let forecast of forecasts">
-      <td>{{ forecast.date }}</td>
-      <td>{{ forecast.temperatureC }}</td>
-      <td>{{ forecast.temperatureF }}</td>
-      <td>{{ forecast.summary }}</td>
-    </tr>
-  </tbody>
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="reservations">
+    <thead>
+        <tr>
+            <th>Sum</th>
+            <th>Location</th>
+            <th>AddedOn</th>
+            <th>Currency</th>
+            <th>Type</th>
+            <th>DepartureTime</th>
+            <th>ArrivalTime</th>
+            <th>Documents</th>
+            <th>Number of remarks</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let reservations of reservations">
+            <td>{{ reservations.sum }}</td>
+            <td>{{ reservations.location }}</td>
+            <td>{{ reservationst.addedOn }}</td>
+            <td>{{ reservations.currency }}</td>
+            <td>{{ reservations.type }}</td>
+            <td>{{ reservations.departureTime }}</td>
+            <td>{{ reservationst.arrivalTime }}</td>
+            <td>{{ reservations.numberOfRemarks }}</td>
+            <td>
+
+<a class="btn btn-primary" [routerlink]="['/fetch-data', reservation.id]" routerlinkactive="active">details</a> |
+                <a class="btn btn-info">edit</a> |
+                <a class="btn btn-danger" (click)="delete(reservation.id)">delete</a>
+            </td>
+        </tr>
+    </tbody>
 </table>
+
+
+<p>add a reservation</p>
+
+
+<input [(ngmodel)]="id" />
+
+<p>{{id}}</p>
+
+<button (click)="submit()">submit!</button>
+
+
+<input type="date" />
