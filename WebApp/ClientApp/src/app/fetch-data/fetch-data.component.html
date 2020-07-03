@@ -15,7 +15,9 @@
             <th>Type</th>
             <th>DepartureTime</th>
             <th>ArrivalTime</th>
-            <th>Documents</th>
+            <th>Docs</th>
+            <th>Remarks number</th>
+            <th>Operations</th>
 
         </tr>
     </thead>
@@ -32,11 +34,11 @@
             <td>{{ reservations.arrivalTime }}</td>
             <td>{{ reservations.documents }}</td>
 
-            <td>
+            <!--<td>
             <a class="btn btn-primary" [routerlink]="['/fetch-data', reservation.id]" routerlinkactive="active">details</a> |
             <a class="btn btn-info">edit</a> |
             <a class="btn btn-danger" (click)="delete(reservation.id)">delete</a>
-            </td>
+            </td>-->
 
         </tr>
     </tbody>
