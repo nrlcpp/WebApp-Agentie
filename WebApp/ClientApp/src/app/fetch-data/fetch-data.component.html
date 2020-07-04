@@ -22,8 +22,7 @@
     </thead>
 
     <tbody>
-        <tr *ngFor="let reservation of reservations">
-            {{reservation.patientid}}
+        <tr *ngFor="let reservation of reservations$">
             <td>{{ reservations.id }}</td>
             <td>{{ reservations.sum }}</td>
             <td>{{ reservations.location }}</td>
@@ -34,23 +33,12 @@
             <td>{{ reservations.arrivalTime }}</td>
             <td>{{ reservations.documents }}</td>
             <td>{{ reservations.numberOfRemarks }}</td>
-
-
             <td>
-                <a>Details</a>
-                <!--<a class="btn btn-primary" [routerlink]="['/fetch-data', reservation.id]" routerlinkactive="active">details</a> |-->
-                <a>Edit</a> |
-                <a>Delete</a>
+                <a class="btn btn-primary" [routerLink]="['/fetch-data', reservation.id]" routerLinkActive="active">Details</a> |
+                <a class="btn btn-info">Edit</a> |
+                <a class="btn btn-danger" (click)="delete(reservations.id)">Delete</a>
             </td>
-
         </tr>
-    <!--<td>
-    <a class="btn btn-primary" [routerlink]="['/fetch-data', reservation.id]" routerlinkactive="active">details</a> |
-    <a class="btn btn-info">edit</a> |
-    <a class="btn btn-danger" (click)="delete(reservation.id)">delete</a>
-    </td>-->
-
-
     </tbody>
 </table>
 

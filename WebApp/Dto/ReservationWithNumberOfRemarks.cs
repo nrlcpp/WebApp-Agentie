@@ -11,8 +11,6 @@ namespace WebApp.Dto
     {
         public long Id { get; set; }
 
-        //   public string Description { get; set; }
-
         public long Sum { get; set; }
 
         public string Location { get; set; }
