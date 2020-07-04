@@ -1,7 +1,13 @@
-﻿using System;
+﻿using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
+using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
+using WebApp.Dto;
 using WebApp.Helpers;
 using WebApp.Models;
 
@@ -9,28 +15,32 @@ namespace WebApp.Services
 {
     public interface IUserService
     {
-        User Authenticate(string user, string pasword);
+        User Authenticate(string user, string password);
         IEnumerable<User> GetAll();
     }
 
     public class UserService : IUserService
     {
         // users hardcoded for simplicity, store in a db with hashed passwords in production applications
-        private List<User> _users = new List<User>
-        {
-            new User { Id = 1, FirstName = "Test", LastName = "User", Username = "test", Password = "test" }
-        };
+        //private List<User> _users = new List<User>
+        //{
+        //    new User { Id = 1, FirstName = "Test", LastName = "User", Username = "test", Password = "test" }
+        //};
 
+        private ReservationsDbContext _dbContext;
         private readonly AppSettings _appSettings;
 
-        public UserService(IOptions<AppSettings> appSettings)
+        public UserService(IOptions<AppSettings> appSettings, ReservationsDbContext dbContext)
         {
             _appSettings = appSettings.Value;
+
+            _dbContext = dbContext;
+
         }
 
-        public AuthenticateResponse Authenticate(AuthenticateRequest model)
+        public User Authenticate(string username, string password)
         {
-            var user = _users.SingleOrDefault(x => x.Username == model.Username && x.Password == model.Password);
+            var user = _dbContext.Users.SingleOrDefault(x => x.Username == username && x.Password == HashUtils.GetHashString( password));
 
             // return null if user not found
             if (user == null) return null;
@@ -38,13 +48,10 @@ namespace WebApp.Services
             // authentication successful so generate jwt token
             var token = generateJwtToken(user);
 
-            return new AuthenticateResponse(user, token);
+            return new AuthenticatePostModel(user, token);
         }
 
-        public IEnumerable<User> GetAll()
-        {
-            return _users;
-        }
+
 
         // helper methods
 
@@ -66,9 +73,14 @@ namespace WebApp.Services
             return tokenHandler.WriteToken(token);
         }
 
-        public User Authenticate(string user, string pasword)
+        public IEnumerable<User> GetAll()
         {
-            throw new NotImplementedException();
+            return _dbContext.Users.ToList();
         }
+
+        //public User Authenticate(string user, string pasword)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

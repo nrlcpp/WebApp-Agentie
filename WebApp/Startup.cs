@@ -1,5 +1,6 @@
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -9,13 +10,17 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
 using System.IO;
 using System.Reflection;
+using System.Text;
 using System.Text.Json.Serialization;
+using WebApp.Helpers;
 using WebApp.Models;
 using WebApp.ModelValidators;
+using WebApp.Services;
 
 namespace WebApp
 {
@@ -47,7 +52,35 @@ namespace WebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ReservationsDbContext>(options =>
+            // configure strongly typed settings objects
+            var appSettingsSection = Configuration.GetSection("AppSettings");
+            services.Configure<AppSettings>(appSettingsSection);
+
+            // configure jwt authentication
+            var appSettings = appSettingsSection.Get<AppSettings>();
+            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+            });
+
+            // configure DI (Dependency injection)for application services
+            services.AddScoped<IUserService, UserService>();
+
+        services.AddDbContext<ReservationsDbContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("ReservationsConnectionString")));
             services.AddControllers()
                 .AddJsonOptions(options =>
@@ -57,6 +90,7 @@ namespace WebApp
                 })
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly()));
             services.AddTransient<IValidator<Reservation>, ReservationValidator>();
+
 
             //services
             //    .AddMvc(options =>
@@ -68,6 +102,7 @@ namespace WebApp
             //        options.EnableEndpointRouting = false;
             //    });
             // Register the Swagger generator, defining 1 or more Swagger documents
+            
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
@@ -135,8 +170,6 @@ namespace WebApp
             //}
 
             app.UseSpaStaticFiles();
-
-
 
             app.UseRouting();
 

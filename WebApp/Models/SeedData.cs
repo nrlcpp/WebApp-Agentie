@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Linq;
+using WebApp.Helpers;
 
 namespace WebApp.Models
 {
@@ -13,6 +14,21 @@ namespace WebApp.Models
                 serviceProvider.GetRequiredService<
                     DbContextOptions<ReservationsDbContext>>()))
             {
+
+                if (!context.Users.Any())
+                {
+                    context.Users.Add(new User
+                    { 
+                        FirstName = "First",
+                        LastName = "Last",
+                        Username = "FIrstUsername",
+                        Password= HashUtils.GetHashString("parolasigura")
+                        
+                        });
+                context.SaveChanges();
+            }
+
+
                 // Look for any reservations.
                 if (context.Reservations.Any())
                 {

@@ -9,3 +9,4 @@ namespace WebApp.Helpers
     {
         public string Secret { get; set; }
     }
+}

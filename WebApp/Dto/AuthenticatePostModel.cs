@@ -8,6 +8,15 @@ namespace WebApp.Dto
 {
     public class AuthenticatePostModel
     {
+        private object user;
+        private string token;
+
+        public AuthenticatePostModel(object user, string token)
+        {
+            this.user = user;
+            this.token = token;
+        }
+
         [Required]
         public string Username { get; set; }
 

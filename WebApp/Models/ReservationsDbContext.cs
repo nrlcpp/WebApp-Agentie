@@ -4,13 +4,18 @@ namespace WebApp.Models
 {
     public class ReservationsDbContext : DbContext
     {
+
+        public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<Remarks> Remarks { get; set; }
+
+        //public DbSet<User> ReservationUser { get; set; }
         public ReservationsDbContext(DbContextOptions<ReservationsDbContext> options)
             : base(options)
         {
         }
 
-        public DbSet<Reservation> Reservations { get; set; }
-        public DbSet<Remarks> Remarks { get; set; }
+
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //one to many connection Reservation - Remarks
