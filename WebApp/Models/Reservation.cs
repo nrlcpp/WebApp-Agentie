@@ -42,6 +42,8 @@ namespace WebApp.Models
 
         public bool Documents { get; set; }
 
+        public User AddedBy { get; set; }
+
         public List<Remarks> Remarks { get; set; }
     }
 }

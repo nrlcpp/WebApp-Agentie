@@ -19,7 +19,7 @@ namespace WebApp.Models
         public string Content { get; set; }
         public Importance Importance { get; set; }
         public long ReservationId { get; set; }
-       // public User AddedBy { get; set; }
+        public User AddedBy { get; set; }
 
         [JsonIgnore]
         public Reservation Reservation { get; set; }
