@@ -1,5 +1,6 @@
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,6 +28,22 @@ namespace WebApp
 
         public IConfiguration Configuration { get; }
 
+        //services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        //        .AddJwtBearer(options =>
+        //        {
+        //    options.TokenValidationParameters = new TokenValidationParameters
+        //    {
+        //        ValidateIssuer = true,
+        //        ValidateAudience = true,
+        //        ValidateLifetime = true,
+        //        ValidateIssuerSigningKey = true,
+        //        ValidIssuer = Configuration.GetValue<string>("Authentication:Issuer"),
+        //        ValidAudience = Configuration.GetValue<string>("Authentication:Issuer"),
+        //        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.GetValue<string>("Authentication:Secret"))),
+        //        ClockSkew = TimeSpan.Zero
+        //    };
+        //});
+        
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -41,6 +58,15 @@ namespace WebApp
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly()));
             services.AddTransient<IValidator<Reservation>, ReservationValidator>();
 
+            //services
+            //    .AddMvc(options =>
+            //    {
+            //        AuthorizationPolicy policy = new AuthorizationPolicyBuilder(JwtBearerDefaults.AuthenticationScheme).RequireAuthenticatedUser().Build();
+
+            //        options.Filters.Add(new Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter(policy));
+
+            //        options.EnableEndpointRouting = false;
+            //    });
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
@@ -130,6 +156,13 @@ namespace WebApp
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My Reservation API V1");
             });
+
+            //app.UseMvc(routes =>
+            //{
+            //    routes.MapRoute(
+            //        name: "default",
+            //        template: "{controller}/{action=Index}/{id?}");
+            //});
 
             app.UseSpa(spa =>
             {

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApp.Dto;
 using WebApp.Models;
+using WebApp.Models.Collections;
 
 namespace WebApp.Controllers
 {
@@ -22,37 +23,49 @@ namespace WebApp.Controllers
         }
 
         // GET: api/Reservations
+        /// <summary>
+        /// Gets a list of all the reservations.
+        /// </summary>
+        /// <param name="from">Filter reservations added from this date time (inclusive). Leave empty for no lower limit</param>
+        /// <param name="to">Filter bookings add up to this date time (inclusive). Leave empty for no upper limit.</param>
+        /// <param name="page">The page of results, starting from 0.</param>
+        /// <param name="itemsPerPage">The number of reservationss to display per page</param>
+        /// <returns>A list of reservation objects.</returns>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Reservation>>> GetReservations(
+        public async Task<ActionResult<IEnumerable<ReservationWithNumberOfRemarks>>> GetReservations(
             [FromQuery] DateTime? from = null,
-            [FromQuery] DateTime? to = null)
+            [FromQuery] DateTime? to = null,
+            [FromQuery] int page = 0,
+            [FromQuery] int itemsPerPage = 15)
 
         {
-                //Filters results by date
-                IQueryable<Reservation> result = _context.Reservations;
+            //var identity = User.Identity;
 
-                //if (from != null)
-                //{
-                //    result = result.Where(e => from <= e.Date);
-
-                //}
-                //if (to != null)
-                //{
-                //    result = result.Where(e => e.Date <= to);
-                //}
+            //Filters results by date
+            IQueryable<Reservation> result = _context.Reservations;
 
                 if (from != null)
                 {
-                    result = result.Where(e => from <= e.DepartureTime);
+                    result = result.Where(r => from <= r.DepartureTime);
 
                 }
                 if (to != null)
                 {
-                    result = result.Where(e => e.DepartureTime <= to);
+                    result = result.Where(r => r.DepartureTime <= to);
                 }
 
-                var resultList = await result.ToListAsync();
-                return resultList;
+            var resultList = await result
+            .OrderByDescending(r => r.Sum)
+            .Include(r => r.Remarks)
+            .Skip(page * itemsPerPage)
+            .Take(itemsPerPage)
+            .Select(r => ReservationWithNumberOfRemarks.FromReservation(r))
+            .ToListAsync();
+
+            var paginatedList = new PaginatedList<ReservationWithNumberOfRemarks>(page, await result.CountAsync(), itemsPerPage);
+            paginatedList.Items.AddRange(resultList);
+
+            return Ok(paginatedList);
 
                 //return await _context.Reservations.ToListAsync();
 
@@ -60,43 +73,55 @@ namespace WebApp.Controllers
 
         // GET: api/Reservations/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Reservation>> GetReservation(long id)
+        public async Task<ActionResult<ReservationDetails>> GetReservation(long id)
         {
-            var reservation = await _context.Reservations
+            var reservation = await _context
+                .Reservations
                 .Include(r => r.Remarks)
-                .Select(r => new ReservationDtoDetail()
-                {
-                    Id = r.Id,
-                    Sum = r.Sum,
-                    Location = r.Location,
-                    AddedOn = r.AddedOn,
-                    Currency = r.Currency,
-                    Type = r.Type,
-                    DepartureTime = r.DepartureTime,
-                    ArrivalTime = r.ArrivalTime,
-                    Documents = r.Documents,
-
-                    Remarks = r.Remarks.Select(o => new RemarksDtoDetail()
-                    {
-                        Id = o.Id,
-                        Agent = o.Agent,
-                        Content = o.Content,
-                        //Importance = o.Importance,
-                    })
-                }).SingleOrDefaultAsync(r => r.Id == id);
+                .FirstOrDefaultAsync(r => r.Id == id);
 
             if (reservation == null)
             {
                 return NotFound();
             }
 
-            return Ok(reservation);
+            return ReservationDetails.FromReservation(reservation);
         }
+            //    var reservation = await _context.Reservations
+            //        .Include(r => r.Remarks)
+            //        .Select(r => new ReservationDtoDetail()
+            //        {
+            //            Id = r.Id,
+            //            Sum = r.Sum,
+            //            Location = r.Location,
+            //            AddedOn = r.AddedOn,
+            //            Currency = r.Currency,
+            //            Type = r.Type,
+            //            DepartureTime = r.DepartureTime,
+            //            ArrivalTime = r.ArrivalTime,
+            //            Documents = r.Documents,
 
-        // PUT: api/Reservations/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
+            //            Remarks = r.Remarks.Select(o => new RemarksDtoDetail()
+            //            {
+            //                Id = o.Id,
+            //                Agent = o.Agent,
+            //                Content = o.Content,
+            //                //Importance = o.Importance,
+            //            })
+            //        }).SingleOrDefaultAsync(r => r.Id == id);
+
+            //    if (reservation == null)
+            //    {
+            //        return NotFound();
+            //    }
+
+            //    return Ok(reservation);
+            //}
+
+            // PUT: api/Reservations/5
+            // To protect from overposting attacks, enable the specific properties you want to bind to, for
+            // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+            [HttpPut("{id}")]
         public async Task<IActionResult> PutReservation(long id, Reservation reservation)
         {
             if (id != reservation.Id)

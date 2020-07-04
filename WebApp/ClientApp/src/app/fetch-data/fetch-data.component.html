@@ -18,12 +18,12 @@
             <th>Docs</th>
             <th>Remarks number</th>
             <th>Operations</th>
-
         </tr>
     </thead>
 
     <tbody>
-        <tr *ngFor="let reservations of reservations">
+        <tr *ngFor="let reservation of reservations">
+            {{reservation.patientid}}
             <td>{{ reservations.id }}</td>
             <td>{{ reservations.sum }}</td>
             <td>{{ reservations.location }}</td>
@@ -33,19 +33,29 @@
             <td>{{ reservations.departureTime }}</td>
             <td>{{ reservations.arrivalTime }}</td>
             <td>{{ reservations.documents }}</td>
+            <td>{{ reservations.numberOfRemarks }}</td>
 
-            <!--<td>
-            <a class="btn btn-primary" [routerlink]="['/fetch-data', reservation.id]" routerlinkactive="active">details</a> |
-            <a class="btn btn-info">edit</a> |
-            <a class="btn btn-danger" (click)="delete(reservation.id)">delete</a>
-            </td>-->
+
+            <td>
+                <a>Details</a>
+                <!--<a class="btn btn-primary" [routerlink]="['/fetch-data', reservation.id]" routerlinkactive="active">details</a> |-->
+                <a>Edit</a> |
+                <a>Delete</a>
+            </td>
 
         </tr>
+    <!--<td>
+    <a class="btn btn-primary" [routerlink]="['/fetch-data', reservation.id]" routerlinkactive="active">details</a> |
+    <a class="btn btn-info">edit</a> |
+    <a class="btn btn-danger" (click)="delete(reservation.id)">delete</a>
+    </td>-->
+
+
     </tbody>
 </table>
 
 
-<p>add a reservation</p>
+<!--<p>add a reservation</p>
 
 
 <input [(ngModel)]="id" />
@@ -55,4 +65,4 @@
 <button (click)="submit()">submit!</button>
 
 
-<input type="date" />
+<input type="date" />-->

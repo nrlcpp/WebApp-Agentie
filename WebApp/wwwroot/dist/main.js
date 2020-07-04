@@ -35,7 +35,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h1 id=\"tableLabel\">Reservations</h1>\r\n\r\n<p>Here you can see all the reservations, and you can edit, add or delete it.</p>\r\n\r\n<p *ngIf=\"!reservations\"><em>Loading...</em></p>\r\n\r\n<table class='table table-striped' aria-labelledby=\"tableLabel\" *ngIf=\"reservations\">\r\n    <thead>\r\n        <tr>\r\n            <th>Id</th>\r\n            <th>Sum</th>\r\n            <th>Location</th>\r\n            <th>AddedOn</th>\r\n            <th>Currency</th>\r\n            <th>Type</th>\r\n            <th>DepartureTime</th>\r\n            <th>ArrivalTime</th>\r\n            <th>Docs</th>\r\n            <th>Remarks number</th>\r\n            <th>Operations</th>\r\n\r\n        </tr>\r\n    </thead>\r\n\r\n    <tbody>\r\n        <tr *ngFor=\"let reservations of reservations\">\r\n            <td>{{ reservations.id }}</td>\r\n            <td>{{ reservations.sum }}</td>\r\n            <td>{{ reservations.location }}</td>\r\n            <td>{{ reservations.addedOn }}</td>\r\n            <td>{{ reservations.currency }}</td>\r\n            <td>{{ reservations.type }}</td>\r\n            <td>{{ reservations.departureTime }}</td>\r\n            <td>{{ reservations.arrivalTime }}</td>\r\n            <td>{{ reservations.documents }}</td>\r\n\r\n            <!--<td>\r\n            <a class=\"btn btn-primary\" [routerlink]=\"['/fetch-data', reservation.id]\" routerlinkactive=\"active\">details</a> |\r\n            <a class=\"btn btn-info\">edit</a> |\r\n            <a class=\"btn btn-danger\" (click)=\"delete(reservation.id)\">delete</a>\r\n            </td>-->\r\n\r\n        </tr>\r\n    </tbody>\r\n</table>\r\n\r\n\r\n<p>add a reservation</p>\r\n\r\n\r\n<input [(ngModel)]=\"id\" />\r\n\r\n<p>{{id}}</p>\r\n\r\n<button (click)=\"submit()\">submit!</button>\r\n\r\n\r\n<input type=\"date\" />\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<h1 id=\"tableLabel\">Reservations</h1>\r\n\r\n<p>Here you can see all the reservations, and you can edit, add or delete it.</p>\r\n\r\n<p *ngIf=\"!reservations\"><em>Loading...</em></p>\r\n\r\n<table class='table table-striped' aria-labelledby=\"tableLabel\" *ngIf=\"reservations\">\r\n    <thead>\r\n        <tr>\r\n            <th>Id</th>\r\n            <th>Sum</th>\r\n            <th>Location</th>\r\n            <th>AddedOn</th>\r\n            <th>Currency</th>\r\n            <th>Type</th>\r\n            <th>DepartureTime</th>\r\n            <th>ArrivalTime</th>\r\n            <th>Docs</th>\r\n            <th>Remarks number</th>\r\n            <th>Operations</th>\r\n        </tr>\r\n    </thead>\r\n\r\n    <tbody>\r\n        <tr *ngFor=\"let reservation of reservations\">\r\n            {{reservation.patientid}}\r\n            <td>{{ reservations.id }}</td>\r\n            <td>{{ reservations.sum }}</td>\r\n            <td>{{ reservations.location }}</td>\r\n            <td>{{ reservations.addedOn }}</td>\r\n            <td>{{ reservations.currency }}</td>\r\n            <td>{{ reservations.type }}</td>\r\n            <td>{{ reservations.departureTime }}</td>\r\n            <td>{{ reservations.arrivalTime }}</td>\r\n            <td>{{ reservations.documents }}</td>\r\n            <td>{{ reservations.numberOfRemarks }}</td>\r\n\r\n\r\n            <td>\r\n                <a>Details</a>\r\n                <!--<a class=\"btn btn-primary\" [routerlink]=\"['/fetch-data', reservation.id]\" routerlinkactive=\"active\">details</a> |-->\r\n                <a>Edit</a> |\r\n                <a>Delete</a>\r\n            </td>\r\n\r\n        </tr>\r\n    <!--<td>\r\n    <a class=\"btn btn-primary\" [routerlink]=\"['/fetch-data', reservation.id]\" routerlinkactive=\"active\">details</a> |\r\n    <a class=\"btn btn-info\">edit</a> |\r\n    <a class=\"btn btn-danger\" (click)=\"delete(reservation.id)\">delete</a>\r\n    </td>-->\r\n\r\n\r\n    </tbody>\r\n</table>\r\n\r\n\r\n<!--<p>add a reservation</p>\r\n\r\n\r\n<input [(ngModel)]=\"id\" />\r\n\r\n<p>{{id}}</p>\r\n\r\n<button (click)=\"submit()\">submit!</button>\r\n\r\n\r\n<input type=\"date\" />-->\r\n");
 
 /***/ }),
 
@@ -62,6 +62,19 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("<header>\r\n  <nav\r\n    class=\"navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3\"\r\n  >\r\n    <div class=\"container\">\r\n      <a class=\"navbar-brand\" [routerLink]=\"['/']\">WebApp</a>\r\n      <button\r\n        class=\"navbar-toggler\"\r\n        type=\"button\"\r\n        data-toggle=\"collapse\"\r\n        data-target=\".navbar-collapse\"\r\n        aria-label=\"Toggle navigation\"\r\n        [attr.aria-expanded]=\"isExpanded\"\r\n        (click)=\"toggle()\"\r\n      >\r\n        <span class=\"navbar-toggler-icon\"></span>\r\n      </button>\r\n      <div\r\n        class=\"navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse\"\r\n        [ngClass]=\"{ show: isExpanded }\"\r\n      >\r\n        <ul class=\"navbar-nav flex-grow\">\r\n          <li\r\n            class=\"nav-item\"\r\n            [routerLinkActive]=\"['link-active']\"\r\n            [routerLinkActiveOptions]=\"{ exact: true }\"\r\n          >\r\n            <a class=\"nav-link text-dark\" [routerLink]=\"['/']\">Home</a>\r\n          </li>\r\n          <li class=\"nav-item\" [routerLinkActive]=\"['link-active']\">\r\n            <a class=\"nav-link text-dark\" [routerLink]=\"['/counter']\"\r\n              >Counter</a\r\n            >\r\n          </li>\r\n          <li class=\"nav-item\" [routerLinkActive]=\"['link-active']\">\r\n            <a class=\"nav-link text-dark\" [routerLink]=\"['/fetch-data']\"\r\n              >Fetch data</a\r\n            >\r\n          </li>\r\n        </ul>\r\n      </div>\r\n    </div>\r\n  </nav>\r\n</header>\r\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/reservation-details/reservation-details.component.html":
+/*!**************************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/reservation-details/reservation-details.component.html ***!
+  \**************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<p>reservation-details works!</p>\n<p *ngIf=\"!reservation\"><em>Loading...</em></p>\n\n<a [routerLink]=\"['/fetch-data']\" routerLinkActive=\"active\">Back</a>\n<table class='table table-striped' aria-labelledby=\"tableLabel\" *ngIf=\"reservation\">\n    <tbody>\n        <tr>\n            <th>Id</th>\n            <td>{{ reservation.id }}</td>\n        </tr>\n\n        <tr>\n            <th>Sum</th>\n            <td>{{ reservation.sum }}</td>\n        </tr>\n        <tr>\n            <th>Location</th>\n            <td>{{ reservation.lication }}</td>\n        </tr>\n        <tr>\n            <th>AddedOn</th>\n            <td>{{ reservation.AddedOn }}</td>\n        </tr>\n        <tr>\n            <th>Currency</th>\n            <td>{{ reservation.Currency }}</td>\n        </tr>\n        <tr>\n            <th>Type</th>\n            <td>{{ reservation.Type }}</td>\n        </tr>\n        <tr>\n            <th>DepartureTime</th>\n            <td>{{ reservation.DepartureTime }}</td>\n        </tr>\n        <tr>\n            <th>ArrivalTime</th>\n            <td>{{ reservation.ArrivalTime }}</td>\n        </tr>\n        <tr>\n            <th>Documents</th>\n            <td>{{ reservation.Documents }}</td>\n        </tr>\n\n\n    </tbody>\n</table>\n\n<h2>Remarks</h2>\n<table *ngIf=\"reservation\">\n    <thead>\n        <tr>\n            <th>Content</th>\n            <th>Agent</th>\n            <th>Importance</th>\n        </tr>\n    </thead>\n    <tr *ngFor=\"let remarks of reservation.remarks\">\n        <td>{{ remarks.content }}</td>\n        <td>{{ remarks.agent }}</td>\n        <td>{{ remarks.importance }}</td>\n    </tr>\n</table>\n<a [routerLink]=\"['/fetch-data']\" routerLinkActive=\"active\">Back</a>\n");
 
 /***/ }),
 
@@ -145,6 +158,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
 /* harmony import */ var _counter_counter_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./counter/counter.component */ "./src/app/counter/counter.component.ts");
 /* harmony import */ var _fetch_data_fetch_data_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./fetch-data/fetch-data.component */ "./src/app/fetch-data/fetch-data.component.ts");
+/* harmony import */ var _reservation_details_reservation_details_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./reservation-details/reservation-details.component */ "./src/app/reservation-details/reservation-details.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -164,6 +178,7 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
+
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
@@ -173,7 +188,8 @@ AppModule = __decorate([
             _nav_menu_nav_menu_component__WEBPACK_IMPORTED_MODULE_6__["NavMenuComponent"],
             _home_home_component__WEBPACK_IMPORTED_MODULE_7__["HomeComponent"],
             _counter_counter_component__WEBPACK_IMPORTED_MODULE_8__["CounterComponent"],
-            _fetch_data_fetch_data_component__WEBPACK_IMPORTED_MODULE_9__["FetchDataComponent"]
+            _fetch_data_fetch_data_component__WEBPACK_IMPORTED_MODULE_9__["FetchDataComponent"],
+            _reservation_details_reservation_details_component__WEBPACK_IMPORTED_MODULE_10__["ReservationDetailsComponent"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"].withServerTransition({ appId: 'ng-cli-universal' }),
@@ -183,6 +199,7 @@ AppModule = __decorate([
                 { path: '', component: _home_home_component__WEBPACK_IMPORTED_MODULE_7__["HomeComponent"], pathMatch: 'full' },
                 { path: 'counter', component: _counter_counter_component__WEBPACK_IMPORTED_MODULE_8__["CounterComponent"] },
                 { path: 'fetch-data', component: _fetch_data_fetch_data_component__WEBPACK_IMPORTED_MODULE_9__["FetchDataComponent"] },
+                { path: 'fetch-data/:reservationId', component: _reservation_details_reservation_details_component__WEBPACK_IMPORTED_MODULE_10__["ReservationDetailsComponent"] },
             ])
         ],
         providers: [],
@@ -431,6 +448,107 @@ NavMenuComponent = __decorate([
     })
 ], NavMenuComponent);
 
+
+
+/***/ }),
+
+/***/ "./src/app/reservation-details/reservation-details.component.css":
+/*!***********************************************************************!*\
+  !*** ./src/app/reservation-details/reservation-details.component.css ***!
+  \***********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3Jlc2VydmF0aW9uLWRldGFpbHMvcmVzZXJ2YXRpb24tZGV0YWlscy5jb21wb25lbnQuY3NzIn0= */");
+
+/***/ }),
+
+/***/ "./src/app/reservation-details/reservation-details.component.ts":
+/*!**********************************************************************!*\
+  !*** ./src/app/reservation-details/reservation-details.component.ts ***!
+  \**********************************************************************/
+/*! exports provided: ReservationDetailsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReservationDetailsComponent", function() { return ReservationDetailsComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (undefined && undefined.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+
+
+
+let ReservationDetailsComponent = class ReservationDetailsComponent {
+    constructor(http, baseUrl, route) {
+        this.http = http;
+        this.baseUrl = baseUrl;
+        this.route = route;
+    }
+    loadReservation(reservationId) {
+        this.http.get(this.baseUrl + 'api/Reservations/' + reservationId).subscribe(result => {
+            this.reservation = result;
+            console.log(this.reservation);
+        }, error => console.error(error));
+    }
+    ngOnInit() {
+        this.route.paramMap.subscribe(params => {
+            this.loadReservation(params.get('reservationId'));
+        });
+    }
+};
+ReservationDetailsComponent.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"] },
+    { type: String, decorators: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"], args: ['BASE_URL',] }] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] }
+];
+ReservationDetailsComponent = __decorate([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
+        selector: 'app-reservation-details',
+        template: __importDefault(__webpack_require__(/*! raw-loader!./reservation-details.component.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/reservation-details/reservation-details.component.html")).default,
+        styles: [__importDefault(__webpack_require__(/*! ./reservation-details.component.css */ "./src/app/reservation-details/reservation-details.component.css")).default]
+    }),
+    __param(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])('BASE_URL')),
+    __metadata("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"], String, _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]])
+], ReservationDetailsComponent);
+
+var Type;
+(function (Type) {
+    Type[Type["circuit"] = 0] = "circuit";
+    Type[Type["stay"] = 1] = "stay";
+    Type[Type["accommodation"] = 2] = "accommodation";
+    Type[Type["transport"] = 3] = "transport";
+    Type[Type["others"] = 4] = "others";
+})(Type || (Type = {}));
+var Currency;
+(function (Currency) {
+    Currency[Currency["EUR"] = 0] = "EUR";
+    Currency[Currency["RON"] = 1] = "RON";
+    Currency[Currency["USD"] = 2] = "USD";
+})(Currency || (Currency = {}));
+var Importance;
+(function (Importance) {
+    Importance[Importance["hight"] = 0] = "hight";
+    Importance[Importance["medium"] = 1] = "medium";
+    Importance[Importance["lower"] = 2] = "lower";
+})(Importance || (Importance = {}));
 
 
 /***/ }),

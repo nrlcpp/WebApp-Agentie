@@ -1,0 +1,64 @@
+<p>reservation-details works!</p>
+<p *ngIf="!reservation"><em>Loading...</em></p>
+
+<a [routerLink]="['/fetch-data']" routerLinkActive="active">Back</a>
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="reservation">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ reservation.id }}</td>
+        </tr>
+
+        <tr>
+            <th>Sum</th>
+            <td>{{ reservation.sum }}</td>
+        </tr>
+        <tr>
+            <th>Location</th>
+            <td>{{ reservation.lication }}</td>
+        </tr>
+        <tr>
+            <th>AddedOn</th>
+            <td>{{ reservation.AddedOn }}</td>
+        </tr>
+        <tr>
+            <th>Currency</th>
+            <td>{{ reservation.Currency }}</td>
+        </tr>
+        <tr>
+            <th>Type</th>
+            <td>{{ reservation.Type }}</td>
+        </tr>
+        <tr>
+            <th>DepartureTime</th>
+            <td>{{ reservation.DepartureTime }}</td>
+        </tr>
+        <tr>
+            <th>ArrivalTime</th>
+            <td>{{ reservation.ArrivalTime }}</td>
+        </tr>
+        <tr>
+            <th>Documents</th>
+            <td>{{ reservation.Documents }}</td>
+        </tr>
+
+
+    </tbody>
+</table>
+
+<h2>Remarks</h2>
+<table *ngIf="reservation">
+    <thead>
+        <tr>
+            <th>Content</th>
+            <th>Agent</th>
+            <th>Importance</th>
+        </tr>
+    </thead>
+    <tr *ngFor="let remarks of reservation.remarks">
+        <td>{{ remarks.content }}</td>
+        <td>{{ remarks.agent }}</td>
+        <td>{{ remarks.importance }}</td>
+    </tr>
+</table>
+<a [routerLink]="['/fetch-data']" routerLinkActive="active">Back</a>
