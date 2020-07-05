@@ -48,7 +48,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h1>Agentie de turism</h1>\r\n<p>Welcome to your new single-page application for a Travel Agency, built with:</p>\r\n<ul>\r\n  <li><a href='https://get.asp.net/'>ASP.NET Core</a> and <a href='https://msdn.microsoft.com/en-us/library/67ef8sbd.aspx'>C#</a> for cross-platform server-side code</li>\r\n  <li><a href='https://angular.io/'>Angular</a> and <a href='http://www.typescriptlang.org/'>TypeScript</a> for client-side code</li>\r\n  <li><a href='http://getbootstrap.com/'>Bootstrap</a> for layout and styling</li>\r\n</ul>\r\n<p>Start your <strong>reservation</strong>:</p>\r\n<ul>\r\n    <li><strong>Add, Show or modify a reservation</strong></li>\r\n    <li><strong>Add, Show or modify a client (traveller)</strong></li>\r\n  <li><strong>Add, Show or modify remarks for a reservation</strong></li>\r\n</ul>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<h1>Agentie de turism!!</h1>\r\n<p>Welcome to your new single-page application for a Travel Agency, built with:</p>\r\n<ul>\r\n    <li><a href='https://get.asp.net/'>ASP.NET Core</a> and <a href='https://msdn.microsoft.com/en-us/library/67ef8sbd.aspx'>C#</a> for cross-platform server-side code</li>\r\n    <li><a href='https://angular.io/'>Angular</a> and <a href='http://www.typescriptlang.org/'>TypeScript</a> for client-side code</li>\r\n    <li><a href='http://getbootstrap.com/'>Bootstrap</a> for layout and styling</li>\r\n</ul>\r\n<p>Start your <strong>reservation</strong>:</p>\r\n\r\n<ul>\r\n    <li><strong>Add, Show or modify a reservation</strong></li>\r\n    <li><strong>Add, Show or modify a client (traveller)</strong></li>\r\n    <li><strong>Add, Show or modify remarks for a reservation</strong></li>\r\n</ul>\r\n\r\n<mat-slider-toggle>\r\n    Slide me!\r\n</mat-slider-toggle>\r\n\r\n\r\n");
 
 /***/ }),
 
@@ -74,7 +74,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<p>reservation-details works!</p>\n<p *ngIf=\"!reservation\"><em>Loading...</em></p>\n\n<a [routerLink]=\"['/fetch-data']\" routerLinkActive=\"active\">Back</a>\n<table class='table table-striped' aria-labelledby=\"tableLabel\" *ngIf=\"reservation\">\n    <tbody>\n        <tr>\n            <th>Id</th>\n            <td>{{ reservation.id }}</td>\n        </tr>\n\n        <tr>\n            <th>Sum</th>\n            <td>{{ reservation.sum }}</td>\n        </tr>\n        <tr>\n            <th>Location</th>\n            <td>{{ reservation.lication }}</td>\n        </tr>\n        <tr>\n            <th>AddedOn</th>\n            <td>{{ reservation.AddedOn }}</td>\n        </tr>\n        <tr>\n            <th>Currency</th>\n            <td>{{ reservation.Currency }}</td>\n        </tr>\n        <tr>\n            <th>Type</th>\n            <td>{{ reservation.Type }}</td>\n        </tr>\n        <tr>\n            <th>DepartureTime</th>\n            <td>{{ reservation.DepartureTime }}</td>\n        </tr>\n        <tr>\n            <th>ArrivalTime</th>\n            <td>{{ reservation.ArrivalTime }}</td>\n        </tr>\n        <tr>\n            <th>Documents</th>\n            <td>{{ reservation.Documents }}</td>\n        </tr>\n\n\n    </tbody>\n</table>\n\n<h2>Remarks</h2>\n<table *ngIf=\"reservation\">\n    <thead>\n        <tr>\n            <th>Content</th>\n            <th>Agent</th>\n            <th>Importance</th>\n        </tr>\n    </thead>\n    <tr *ngFor=\"let remarks of reservation.remarks\">\n        <td>{{ remarks.content }}</td>\n        <td>{{ remarks.agent }}</td>\n        <td>{{ remarks.importance }}</td>\n    </tr>\n</table>\n<a [routerLink]=\"['/fetch-data']\" routerLinkActive=\"active\">Back</a>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<p>reservation-details works!</p>\r\n<p *ngIf=\"!reservation\"><em>Loading...</em></p>\r\n\r\n<a [routerLink]=\"['/fetch-data']\" routerLinkActive=\"active\">Back</a>\r\n<table class='table table-striped' aria-labelledby=\"tableLabel\" *ngIf=\"reservation\">\r\n    <tbody>\r\n        <tr>\r\n            <th>Id</th>\r\n            <td>{{ reservation.id }}</td>\r\n        </tr>\r\n\r\n        <tr>\r\n            <th>Sum</th>\r\n            <td>{{ reservation.sum }}</td>\r\n        </tr>\r\n        <tr>\r\n            <th>Location</th>\r\n            <td>{{ reservation.lication }}</td>\r\n        </tr>\r\n        <tr>\r\n            <th>AddedOn</th>\r\n            <td>{{ reservation.AddedOn }}</td>\r\n        </tr>\r\n        <tr>\r\n            <th>Currency</th>\r\n            <td>{{ reservation.Currency }}</td>\r\n        </tr>\r\n        <tr>\r\n            <th>Type</th>\r\n            <td>{{ reservation.Type }}</td>\r\n        </tr>\r\n        <tr>\r\n            <th>DepartureTime</th>\r\n            <td>{{ reservation.DepartureTime }}</td>\r\n        </tr>\r\n        <tr>\r\n            <th>ArrivalTime</th>\r\n            <td>{{ reservation.ArrivalTime }}</td>\r\n        </tr>\r\n        <tr>\r\n            <th>Documents</th>\r\n            <td>{{ reservation.Documents }}</td>\r\n        </tr>\r\n\r\n\r\n    </tbody>\r\n</table>\r\n\r\n<h2>Remarks</h2>\r\n<table *ngIf=\"reservation\">\r\n    <thead>\r\n        <tr>\r\n            <th>Content</th>\r\n            <th>Agent</th>\r\n            <th>Importance</th>\r\n        </tr>\r\n    </thead>\r\n    <tr *ngFor=\"let remarks of reservation.remarks\">\r\n        <td>{{ remarks.content }}</td>\r\n        <td>{{ remarks.agent }}</td>\r\n        <td>{{ remarks.importance }}</td>\r\n    </tr>\r\n</table>\r\n<a [routerLink]=\"['/fetch-data']\" routerLinkActive=\"active\">Back</a>\r\n");
 
 /***/ }),
 
@@ -153,12 +153,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _nav_menu_nav_menu_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./nav-menu/nav-menu.component */ "./src/app/nav-menu/nav-menu.component.ts");
-/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
-/* harmony import */ var _counter_counter_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./counter/counter.component */ "./src/app/counter/counter.component.ts");
-/* harmony import */ var _fetch_data_fetch_data_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./fetch-data/fetch-data.component */ "./src/app/fetch-data/fetch-data.component.ts");
-/* harmony import */ var _reservation_details_reservation_details_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./reservation-details/reservation-details.component */ "./src/app/reservation-details/reservation-details.component.ts");
+/* harmony import */ var _shared_angular_material_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./shared/angular-material.module */ "./src/app/shared/angular-material.module.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _nav_menu_nav_menu_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./nav-menu/nav-menu.component */ "./src/app/nav-menu/nav-menu.component.ts");
+/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
+/* harmony import */ var _counter_counter_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./counter/counter.component */ "./src/app/counter/counter.component.ts");
+/* harmony import */ var _fetch_data_fetch_data_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./fetch-data/fetch-data.component */ "./src/app/fetch-data/fetch-data.component.ts");
+/* harmony import */ var _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/platform-browser/animations */ "./node_modules/@angular/platform-browser/fesm2015/animations.js");
+/* harmony import */ var _reservation_details_reservation_details_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./reservation-details/reservation-details.component */ "./src/app/reservation-details/reservation-details.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -179,31 +181,36 @@ var __importDefault = (undefined && undefined.__importDefault) || function (mod)
 
 
 
+
+
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
         declarations: [
-            _app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"],
-            _nav_menu_nav_menu_component__WEBPACK_IMPORTED_MODULE_6__["NavMenuComponent"],
-            _home_home_component__WEBPACK_IMPORTED_MODULE_7__["HomeComponent"],
-            _counter_counter_component__WEBPACK_IMPORTED_MODULE_8__["CounterComponent"],
-            _fetch_data_fetch_data_component__WEBPACK_IMPORTED_MODULE_9__["FetchDataComponent"],
-            _reservation_details_reservation_details_component__WEBPACK_IMPORTED_MODULE_10__["ReservationDetailsComponent"]
+            _app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"],
+            _nav_menu_nav_menu_component__WEBPACK_IMPORTED_MODULE_7__["NavMenuComponent"],
+            _home_home_component__WEBPACK_IMPORTED_MODULE_8__["HomeComponent"],
+            _counter_counter_component__WEBPACK_IMPORTED_MODULE_9__["CounterComponent"],
+            _fetch_data_fetch_data_component__WEBPACK_IMPORTED_MODULE_10__["FetchDataComponent"],
+            _reservation_details_reservation_details_component__WEBPACK_IMPORTED_MODULE_12__["ReservationDetailsComponent"]
         ],
         imports: [
             _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"].withServerTransition({ appId: 'ng-cli-universal' }),
             _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClientModule"],
             _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormsModule"],
             _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forRoot([
-                { path: '', component: _home_home_component__WEBPACK_IMPORTED_MODULE_7__["HomeComponent"], pathMatch: 'full' },
-                { path: 'counter', component: _counter_counter_component__WEBPACK_IMPORTED_MODULE_8__["CounterComponent"] },
-                { path: 'fetch-data', component: _fetch_data_fetch_data_component__WEBPACK_IMPORTED_MODULE_9__["FetchDataComponent"] },
-                { path: 'fetch-data/:reservationId', component: _reservation_details_reservation_details_component__WEBPACK_IMPORTED_MODULE_10__["ReservationDetailsComponent"] },
-            ])
+                { path: '', component: _home_home_component__WEBPACK_IMPORTED_MODULE_8__["HomeComponent"], pathMatch: 'full' },
+                { path: 'counter', component: _counter_counter_component__WEBPACK_IMPORTED_MODULE_9__["CounterComponent"] },
+                { path: 'fetch-data', component: _fetch_data_fetch_data_component__WEBPACK_IMPORTED_MODULE_10__["FetchDataComponent"] },
+                { path: 'fetch-data/:reservationId', component: _reservation_details_reservation_details_component__WEBPACK_IMPORTED_MODULE_12__["ReservationDetailsComponent"] },
+            ]),
+            _shared_angular_material_module__WEBPACK_IMPORTED_MODULE_5__["AngularMaterialModule"],
+            _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_11__["BrowserAnimationsModule"]
         ],
+        exports: [_shared_angular_material_module__WEBPACK_IMPORTED_MODULE_5__["AngularMaterialModule"]],
         providers: [],
-        bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"]]
+        bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_6__["AppComponent"]]
     })
 ], AppModule);
 
@@ -553,6 +560,91 @@ var Importance;
 
 /***/ }),
 
+/***/ "./src/app/shared/angular-material.module.ts":
+/*!***************************************************!*\
+  !*** ./src/app/shared/angular-material.module.ts ***!
+  \***************************************************/
+/*! exports provided: AngularMaterialModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AngularMaterialModule", function() { return AngularMaterialModule; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _angular_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material */ "./node_modules/@angular/material/esm2015/material.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
+  return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+
+
+
+let AngularMaterialModule = class AngularMaterialModule {
+};
+AngularMaterialModule = __decorate([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSlideToggleModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSliderModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatToolbarModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSidenavModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatBadgeModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatListModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatGridListModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatFormFieldModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSelectModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatRadioModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDatepickerModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatNativeDateModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatChipsModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatInputModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatButtonModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatIconModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTooltipModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatPaginatorModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatProgressSpinnerModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatProgressBarModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatCardModule"]
+        ],
+        exports: [
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSlideToggleModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSliderModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatToolbarModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSidenavModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatBadgeModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatListModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTableModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatGridListModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatFormFieldModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatSelectModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatRadioModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatDatepickerModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatNativeDateModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatChipsModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatInputModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatButtonModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatIconModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatTooltipModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatPaginatorModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatProgressSpinnerModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatProgressBarModule"],
+            _angular_material__WEBPACK_IMPORTED_MODULE_2__["MatCardModule"]
+        ],
+    })
+], AngularMaterialModule);
+
+
+
+/***/ }),
+
 /***/ "./src/environments/environment.ts":
 /*!*****************************************!*\
   !*** ./src/environments/environment.ts ***!
@@ -593,13 +685,16 @@ const environment = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getBaseUrl", function() { return getBaseUrl; });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser-dynamic */ "./node_modules/@angular/platform-browser-dynamic/fesm2015/platform-browser-dynamic.js");
-/* harmony import */ var _app_app_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app/app.module */ "./src/app/app.module.ts");
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var hammerjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! hammerjs */ "./node_modules/hammerjs/hammer.js");
+/* harmony import */ var hammerjs__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(hammerjs__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/platform-browser-dynamic */ "./node_modules/@angular/platform-browser-dynamic/fesm2015/platform-browser-dynamic.js");
+/* harmony import */ var _app_app_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app/app.module */ "./src/app/app.module.ts");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./environments/environment */ "./src/environments/environment.ts");
 var __importDefault = (undefined && undefined.__importDefault) || function (mod) {
   return (mod && mod.__esModule) ? mod : { "default": mod };
 };
+
 
 
 
@@ -610,10 +705,10 @@ function getBaseUrl() {
 const providers = [
     { provide: 'BASE_URL', useFactory: getBaseUrl, deps: [] }
 ];
-if (_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].production) {
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["enableProdMode"])();
+if (_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].production) {
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["enableProdMode"])();
 }
-Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformBrowserDynamic"])(providers).bootstrapModule(_app_app_module__WEBPACK_IMPORTED_MODULE_2__["AppModule"])
+Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_2__["platformBrowserDynamic"])(providers).bootstrapModule(_app_app_module__WEBPACK_IMPORTED_MODULE_3__["AppModule"])
     .catch(err => console.log(err));
 
 

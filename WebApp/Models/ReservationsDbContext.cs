@@ -8,7 +8,7 @@ namespace WebApp.Models
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Remarks> Remarks { get; set; }
 
-        //public DbSet<User> ReservationUser { get; set; }
+        public DbSet<User> User { get; set; }
         public ReservationsDbContext(DbContextOptions<ReservationsDbContext> options)
             : base(options)
         {
