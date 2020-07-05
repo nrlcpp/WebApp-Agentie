@@ -23,10 +23,10 @@ namespace WebApp.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost("authenticate")]
+        [HttpPost("Authenticate")]
         public IActionResult Authenticate([FromBody] AuthenticatePostModel model)
         {
-            var response = _userService.Authenticate(model);
+            var response = _userService.Authenticate(model.Username,model.Password);
         
 
             if (response == null)

@@ -59,7 +59,7 @@ import { HttpClient } from '@angular/common/http';
                 }
             });
     }
-    }
+  }
 
         interface Reservation {
             id: number;

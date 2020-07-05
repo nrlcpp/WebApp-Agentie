@@ -13,9 +13,9 @@ namespace WebApp.Models
             using var context = new ReservationsDbContext(
                 serviceProvider.GetRequiredService<
                     DbContextOptions<ReservationsDbContext>>());
-            if (!context.User.Any())
+            if (!context.Users.Any())
             {
-                context.User.Add(new User
+                context.Users.Add(new User
                 {
                     FirstName = "First",
                     LastName = "Last",
