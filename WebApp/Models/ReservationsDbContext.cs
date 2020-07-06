@@ -5,15 +5,13 @@ namespace WebApp.Models
 {
     public class ReservationsDbContext : IdentityDbContext
     {
-
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Remarks> Remarks { get; set; }
+
         public ReservationsDbContext(DbContextOptions<ReservationsDbContext> options)
             : base(options)
         {
         }
-
-
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -23,9 +21,12 @@ namespace WebApp.Models
                 .WithOne(e => e.Reservation)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            //many to many connection Employee -Reservation
-            //modelBuilder.Entity<ReservationEmployee>()
-            //    .HasKey(sc => new { sc.EmployeeId, sc.ReservationId });
+            //many to many connection Traveller -Reservation
+            //modelBuilder.Entity<ReservationTraveller>()
+            //    .HasKey(sc => new { sc.TravellerId, sc.ReservationId });
+
+            base.OnModelCreating(modelBuilder);
+
         }
     }
 }
