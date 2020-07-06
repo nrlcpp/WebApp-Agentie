@@ -23,7 +23,7 @@ const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegistrationComponent },
 
-    //{ path: 'reservations', loadChildren: './Reservations/reservations.module#ReservationsModule' },
+    { path: 'reservations', loadChildren: './Reservations/reservations.module#ReservationsModule' },
 
     { path: '', component: HomeComponent, pathMatch: 'full' },
     { path: 'counter', component: CounterComponent },
