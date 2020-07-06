@@ -33,7 +33,6 @@ namespace WebApp
             }
 
             host.Run();
-
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -44,3 +43,4 @@ namespace WebApp
                 });
     }
 }
+

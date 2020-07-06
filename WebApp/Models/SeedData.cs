@@ -13,18 +13,18 @@ namespace WebApp.Models
             using var context = new ReservationsDbContext(
                 serviceProvider.GetRequiredService<
                     DbContextOptions<ReservationsDbContext>>());
-            if (!context.Users.Any())
-            {
-                context.Users.Add(new User
-                {
-                    FirstName = "First",
-                    LastName = "Last",
-                    Username = "FirstUsername",
-                    Password = HashUtils.GetHashString("parolasigura")
+            //if (!context.Users.Any())
+            //{
+            //    context.Users.Add(new User
+            //    {
+            //        FirstName = "First",
+            //        LastName = "Last",
+            //        Username = "FirstUsername",
+            //        Password = HashUtils.GetHashString("parolasigura")
 
-                });
-                context.SaveChanges();
-            }
+            //    });
+            //    context.SaveChanges();
+            //}
 
 
             // Look for any reservations.

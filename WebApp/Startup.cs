@@ -21,7 +21,7 @@ using System.Text.Json.Serialization;
 using WebApp.Helpers;
 using WebApp.Models;
 using WebApp.ModelValidators;
-using WebApp.Services;
+
 
 namespace WebApp
 {
@@ -63,14 +63,15 @@ namespace WebApp
 
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly()));
             services.AddTransient<IValidator<Reservation>, ReservationValidator>();
+            services.AddDbContext<ReservationsDbContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("ReservationsDbConnectionString")));
 
 
             services
                 .AddMvc(options =>
                 {
-                    AuthorizationPolicy policy = new AuthorizationPolicyBuilder(JwtBearerDefaults.AuthenticationScheme).RequireAuthenticatedUser().Build();
+                   // AuthorizationPolicy policy = new AuthorizationPolicyBuilder(JwtBearerDefaults.AuthenticationScheme).RequireAuthenticatedUser().Build();
 
-                    options.Filters.Add(new Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter(policy));
+                   // options.Filters.Add(new Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter(policy));
 
                     options.EnableEndpointRouting = false;
                 });

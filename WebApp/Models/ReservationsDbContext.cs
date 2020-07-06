@@ -1,14 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebApp.Models
 {
-    public class ReservationsDbContext : DbContext
+    public class ReservationsDbContext : IdentityDbContext
     {
 
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Remarks> Remarks { get; set; }
-
-        public DbSet<User> Users { get; set; }
         public ReservationsDbContext(DbContextOptions<ReservationsDbContext> options)
             : base(options)
         {
