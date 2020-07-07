@@ -1,1 +1,69 @@
 <p>reservations-list works!</p>
+<h1>Reservations</h1>
+
+<p>Many reservations in the list</p>
+
+<div class="example-button-row">
+    <button mat-raised-button [routerLink]='["../edit"]' color="primary">Add</button>
+</div>
+
+<p>Current page: {{reservations?.currentPage}}</p>
+<p>Last page: {{reservations?.totalPages}}</p>
+
+<mat-paginator [length]="reservations?.totalItems"
+               [pageSize]="reservations?.itemsPerPage"
+               [pageSizeOptions]="[5, 25, 50, 100]"
+               (page)="pageEvent = loadReservations($event)">
+</mat-paginator>
+<table mat-table [dataSource]="reservations?.items" class="mat-elevation-z8" *ngIf="reservations">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+    <!-- Position Column -->
+    <ng-container matColumnDef="Id">
+        <th mat-header-cell *matHeaderCellDef style="width:21%"> Id </th>
+        <td mat-cell *matCellDef="let reservation"> {{reservation.Id}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="sum">
+        <th mat-header-cell *matHeaderCellDef style="width:23%"> Sum </th>
+        <td mat-cell *matCellDef="let reservation"> {{reservation.sum}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="marketPrice">
+        <th mat-header-cell *matHeaderCellDef style="width:23%"> Currency </th>
+        <td mat-cell *matCellDef="let reservation"> {{reservation.marketPrice}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="numberOfComments">
+        <th mat-header-cell *matHeaderCellDef style="width:23%"> No. of remarks </th>
+        <td mat-cell *matCellDef="let reservation"> {{reservation.numberOfRemarks}} </td>
+    </ng-container>
+
+
+    <!-- Action Column -->
+    <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef style="width:10%"> Action </th>
+        <td mat-cell *matCellDef="let reservation">
+            <button mat-icon-button matTooltip="Edit" [matTooltipPosition]="'after'">
+                <mat-icon aria-label="Example icon-button with a heart icon" [routerLink]="['../edit', reservation.id]">edit</mat-icon>
+            </button>
+
+            <button mat-icon-button matTooltip="Delete" [matTooltipPosition]="'after'">
+                <mat-icon aria-label="Example icon-button with a heart icon " (click)="deleteReservation(reservation)">delete</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-progress-bar mode="indeterminate" *ngIf="!reservations"></mat-progress-bar>
+
+<mat-paginator [length]="reservations?.totalItems"
+               [pageSize]="reservations?.itemsPerPage"
+               [pageSizeOptions]="[5, 25, 50, 100]"
+               (page)="pageEvent = loadReservations($event)">
