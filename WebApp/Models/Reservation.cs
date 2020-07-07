@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Common;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace WebApp.Models
 {
@@ -23,8 +21,6 @@ namespace WebApp.Models
     public class Reservation
     {
         public long Id { get; set; }
-
-        //   public string Description { get; set; }
 
         public long Sum { get; set; }
 

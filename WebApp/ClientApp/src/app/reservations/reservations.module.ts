@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ReservationsRoutingModule } from './reservations - routing.module';
+import { ReservationsRoutingModule } from './reservations-routing.module';
 import { AngularMaterialModule } from '../shared/angular-material.module';
 import { CoreModule } from '../core/core.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
